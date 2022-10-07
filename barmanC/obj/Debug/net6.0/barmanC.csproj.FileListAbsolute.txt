@@ -1,0 +1,15 @@
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\bin\Debug\net6.0\barmanC.exe
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\bin\Debug\net6.0\barmanC.deps.json
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\bin\Debug\net6.0\barmanC.runtimeconfig.json
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\bin\Debug\net6.0\barmanC.dll
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\bin\Debug\net6.0\barmanC.pdb
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\barmanC.csproj.AssemblyReference.cache
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\barmanC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\barmanC.AssemblyInfoInputs.cache
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\barmanC.AssemblyInfo.cs
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\barmanC.csproj.CoreCompileInputs.cache
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\barmanC.dll
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\refint\barmanC.dll
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\barmanC.pdb
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\barmanC.genruntimeconfig.cache
+C:\Users\vgvoj\RiderProjects\barmanC\barmanC\obj\Debug\net6.0\ref\barmanC.dll
