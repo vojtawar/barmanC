@@ -38,30 +38,30 @@ annanasova_kolaloka.Add("ananas", 10);
 annanasova_kolaloka.Add("horka_voda", 20);
 annanasova_kolaloka.Add("kofola", 70);
 annanasova_kolaloka.Add("tatarka", 10);
-annanasova_kolaloka.Add("led", 20);
+annanasova_kolaloka.Add("led", 40);
 
-comba.stuff.Add("annanasova_kolaloka", new Combo(300, annanasova_kolaloka, 30000));
+comba.stuff.Add("annanasova_kolaloka", new Combo(2500, annanasova_kolaloka, 50000));
 
 IDictionary<string, int> tepla_kofola = new Dictionary<string, int>();
 
 tepla_kofola.Add("kofola", 100);
 tepla_kofola.Add("rum", 10);
 
-comba.stuff.Add("tepla_kofola", new Combo(300, tepla_kofola, 20000));
+comba.stuff.Add("tepla_kofola", new Combo(400, tepla_kofola, 20000));
 
 IDictionary<string, int> apfel_kraut = new Dictionary<string, int>();
 apfel_kraut.Add("kysele_zeli", 10);
 apfel_kraut.Add("most", 30);
 apfel_kraut.Add("horka_voda", 70);
-apfel_kraut.Add("led", 30);
+apfel_kraut.Add("led", 100);
 
-comba.stuff.Add("apfel_kraut", new Combo(300, apfel_kraut, 40000));
+comba.stuff.Add("apfel_kraut", new Combo(1600, apfel_kraut, 40000));
 
 IDictionary<string, int> svarena_kofola = new Dictionary<string, int>();
 svarena_kofola.Add("kofola", 140);
 svarena_kofola.Add("horka_voda", 60);
 
-comba.stuff.Add("svarena_kofola", new Combo(300, svarena_kofola, 20000));
+comba.stuff.Add("svarena_kofola", new Combo(400, svarena_kofola, 20000));
 
 
 
@@ -116,7 +116,7 @@ while (true)
                     count++;
                 }
 
-                double ansver = comba.run(drink);
+                double ansver = comba.run(drink, team_number);
                 double combo_value = comba.values.Max(x => x.Value);
                 foreach (var VARIABLE in comba.values)
                 {
@@ -157,13 +157,13 @@ record Combos
         return iceK ;
     }
 
-    public double run(IDictionary<string, int> drink )
+    public double run(IDictionary<string, int> drink, int team_number )
     {
         double ansver = 0;
         values = new Dictionary<string, double>();
         foreach (var thing in stuff)
         {
-           values.Add(thing.Key, thing.Value.Grade(drink));
+           values.Add(thing.Key, thing.Value.Grade(drink, team_number));
         }
 
         ansver = values.Sum(x => x.Value);
@@ -172,13 +172,13 @@ record Combos
     }
 }
 
-record Combo(double maxPoints, IDictionary<string, int> order, double maxToGive)
+record Combo(double maxPointsD, IDictionary<string, int> order, double maxToGiveD)
 {
     private IDictionary<string, int> order = order;
     private double bonus = 30;
-    private double maxPoints = maxPoints;
-    private double maxToGive = maxToGive;
-    private double givenPoints = 0;
+    private double[] maxPoints = {maxPointsD, maxPointsD, maxPointsD, maxPointsD, maxPointsD, maxPointsD};
+    private double[] maxToGive = {maxToGiveD, maxToGiveD, maxToGiveD, maxToGiveD, maxToGiveD, maxToGiveD};
+    private double[] givenPoints = {0, 0, 0, 0, 0, 0};
     private string hlaska;
 
     float findFulfiment( IDictionary<string, int> drink)
@@ -191,11 +191,11 @@ record Combo(double maxPoints, IDictionary<string, int> order, double maxToGive)
         
         return fulfilment;
     }
-    public double Grade(IDictionary<string, int> drink)
+    public double Grade(IDictionary<string, int> drink, int team_number)
     {
         double fulfilment = findFulfiment(drink);
-        double points = Math.Pow(fulfilment, 1.5) * maxPoints ;
-        points *= Math.Pow((maxToGive - givenPoints) / maxToGive, 2);
+        double points = Math.Pow(fulfilment, 1.5) * maxPoints[team_number] ;
+        points *= Math.Pow((maxToGive[team_number] - givenPoints[team_number]) / maxToGive[team_number], 2);
         int test = (int) fulfilment * 10;
         if (test > 9)
         {
@@ -213,7 +213,7 @@ record Combo(double maxPoints, IDictionary<string, int> order, double maxToGive)
         }
 
         
-        givenPoints += points;
+        givenPoints[team_number] += points;
         
         foreach (var thing in order)
         {
